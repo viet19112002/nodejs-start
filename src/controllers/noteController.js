@@ -27,7 +27,7 @@ let createNewNote = async (req, res) => {
 let updateNoteById = async (req, res) => {
     var _id = req.query.id;
     var title = req.body.title;
-    var description = req.body.description;
+    var description = req.body.description; 
     const note = await db.collection("notes").updateOne({ _id: ObjectId(_id) }, {
         $set: {
             title: title,
