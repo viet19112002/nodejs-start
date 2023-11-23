@@ -1,18 +1,15 @@
 import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm"
 
 @Entity()
-export class User {
+export class Group {
 
     @ObjectIdColumn()
     _id: ObjectId
 
+    @ObjectIdColumn()
+    userId: ObjectId
+
     @Column()
-    deviceId: string
-    
-    @Column()
-    macId: string
-    
-    @Column()
-    googleId: string
-    
+    title: string
+
 }
