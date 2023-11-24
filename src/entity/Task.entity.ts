@@ -1,11 +1,11 @@
-import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm"
+import { Entity, ObjectIdColumn, ObjectId, Column, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"
 import { MissionType } from "../types/mission-type";
 import { TaskEnums } from "../enums/task-enums";
 
 
 @Entity()
 export class Task {
-
+    @PrimaryGeneratedColumn()
     @ObjectIdColumn()
     _id: ObjectId;
 

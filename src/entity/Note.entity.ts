@@ -4,7 +4,7 @@ import { MissionType } from "../types/mission-type";
 import { NoteEnums } from "../enums/note-enums";
 
 @Entity()
-  export class Node {
+  export class Note {
     @ObjectIdColumn()
     _id: ObjectId;
 
