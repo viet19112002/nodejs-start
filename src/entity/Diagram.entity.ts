@@ -1,9 +1,9 @@
-import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm";
+import { Entity, ObjectIdColumn, ObjectId, Column, PrimaryGeneratedColumn } from "typeorm";
 import { BranchType } from "../types/branchs-type";
 
 @Entity()
 export class Diagram {
-
+    @PrimaryGeneratedColumn()
     @ObjectIdColumn()
     _id: ObjectId
 

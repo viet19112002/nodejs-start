@@ -1,6 +1,6 @@
 import { ObjectId } from "typeorm"
 
-export class User {
+export class UserClass {
     _id: ObjectId
 
     deviceId: string
@@ -8,4 +8,12 @@ export class User {
     macId: string
     
     googleId: string
+
+    constructor(deviceId: string, macId: string, googleId: string) {
+        this.deviceId = deviceId
+        this.macId = macId
+        this.googleId = googleId
+    }
+
+    
 }

@@ -1,11 +1,16 @@
-import express from "express";
-import {userController} from "../controllers/User.controller";
+import { Router, Application } from 'express';
+import * as UserController from '../controllers/User.controller';
 
-let router = express.Router();
+const router = Router();
 
-const initAPIRoutes = (app) => {
-    router.get("/getAllNotes", userController.getAllNotes);
-    return app.use("/api", router);
-}
+const initAPIRoutes = (app: Application): Application => {
+    router.get("/users",UserController.getAllUser);
+    router.post("/users",UserController.createUser);
+    router.put("/users",UserController.updateUser);
+    router.delete("/users",UserController.deleteUser);
+    app.use("/api", router);
+
+    return app;
+};
 
 export default initAPIRoutes;
