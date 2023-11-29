@@ -17,15 +17,39 @@ export async function getNoteById(req: Request, res: Response) {
 }
 
 export async function createNote(req: Request, res: Response) {
-    const newNote = new NoteClass(req.body.userId, req.body.groupId, req.body.title, req.body.mission, req.body.description, req.body.record, req.body.image, req.body.createdAt, req.body.alertTime, req.body.isHidden, req.body.theme);
-    const note = await noteRepository.save(newNote);
-    return res.send(note);
+  const newNote = new NoteClass(
+    req.body.userId,
+    req.body.groupId,
+    req.body.title,
+    req.body.mission,
+    req.body.description,
+    req.body.record,
+    req.body.image,
+    req.body.createdAt,
+    req.body.alertTime,
+    req.body.isHidden,
+    req.body.theme
+  );
+  const note = await noteRepository.save(newNote as any);
+  return res.send(note);
 }
 
 export async function updateNote(req: Request, res: Response) {
-    const updateNote = new NoteClass(req.body.userId, req.body.groupId, req.body.title, req.body.mission, req.body.description, req.body.record, req.body.image, req.body.createdAt, req.body.alertTime, req.body.isHidden, req.body.theme);
-    const note = await noteRepository.update(req.params.id, updateNote);
-    return res.send(note);
+  const updateNote = new NoteClass(
+    req.body.userId,
+    req.body.groupId,
+    req.body.title,
+    req.body.mission,
+    req.body.description,
+    req.body.record,
+    req.body.image,
+    req.body.createdAt,
+    req.body.alertTime,
+    req.body.isHidden,
+    req.body.theme
+  );
+  const note = await noteRepository.update(req.params.id, updateNote as any);
+  return res.send(note);
 }
 
 export async function deleteNote(req: Request, res: Response) {

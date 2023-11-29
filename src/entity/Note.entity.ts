@@ -4,42 +4,41 @@ import { MissionType } from "../types/mission-type";
 import { NoteEnums } from "../enums/note-enums";
 
 @Entity()
-  export class Note {
-    @PrimaryGeneratedColumn()
-    @ObjectIdColumn()
-    _id: ObjectId;
+export class Note {
+  @PrimaryGeneratedColumn()
+  @ObjectIdColumn()
+  _id: ObjectId;
 
-    @ObjectIdColumn()
-    userId: ObjectId;
-    
-    @ObjectIdColumn()
-    groupId: ObjectId;
-  
-    @Column()
-    title: string;
-  
-    @Column()
-    mission: MissionType;
+  @ObjectIdColumn()
+  userId: ObjectId;
 
-    @Column()
-    description: string;
-  
-    @Column()
-    record: boolean;
-  
-    @Column()
-    image: string;
-  
-    @Column()
-    createdAt: Date;
-  
-    @Column()
-    alertTime: Date;
+  @ObjectIdColumn()
+  groupId: ObjectId;
 
-    @Column()
-    isHidden: boolean;
+  @Column()
+  title: string;
 
-    @Column()
-    theme: NoteEnums;
+  @Column()
+  mission: MissionType;
 
-  }
+  @Column()
+  description: string;
+
+  @Column()
+  record: boolean;
+
+  @Column()
+  image: string;
+
+  @Column()
+  createdAt: Date;
+
+  @Column()
+  alertTime: Date;
+
+  @Column()
+  isHidden: boolean;
+
+  @Column()
+  theme: NoteEnums;
+}
