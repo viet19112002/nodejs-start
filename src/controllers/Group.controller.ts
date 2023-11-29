@@ -31,3 +31,7 @@ export async function deleteGroup(req: Request, res: Response) {
     const group = await groupRepository.delete(req.params.id);
     return res.send(group);
 }
+
+export function getAllNote(arg0: string, getAllNote: any) {
+    throw new Error('Function not implemented.');
+}
