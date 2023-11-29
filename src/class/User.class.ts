@@ -15,5 +15,4 @@ export class UserClass {
         this.googleId = googleId
     }
 
-    
 }

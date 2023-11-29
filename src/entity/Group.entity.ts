@@ -1,8 +1,8 @@
-import { Entity, ObjectIdColumn, ObjectId, Column } from "typeorm"
+import { Entity, ObjectIdColumn, ObjectId, Column, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity()
 export class Group {
-
+    @PrimaryGeneratedColumn()
     @ObjectIdColumn()
     _id: ObjectId
 
@@ -11,5 +11,6 @@ export class Group {
 
     @Column()
     title: string
+    
 
 }
