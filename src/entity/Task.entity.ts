@@ -19,6 +19,9 @@ export class Task {
     mission: MissionType[];
     
     @Column()
+    AlertTime: Date;
+
+    @Column()
     ischeck: string;
 
     @Column()

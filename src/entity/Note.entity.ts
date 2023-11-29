@@ -41,4 +41,5 @@ import { NoteEnums } from "../enums/note-enums";
 
     @Column()
     theme: NoteEnums;
+
   }
