@@ -29,7 +29,6 @@ const initAPIRoutes = (app: Application): Application => {
     router.post("/notes",NoteController.createNote);
     router.put("/notes",NoteController.updateNote);
     router.delete("/notes",NoteController.deleteNote);
-    
     app.use("/api", router);
 
     return app;
