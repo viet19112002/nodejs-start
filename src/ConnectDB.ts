@@ -15,4 +15,5 @@ export const ConnetDB = new DataSource({
     entities: [User,Task,Note,Group,Diagram],
     migrations: [],
     subscribers: [],
+    dropSchema: true
 })

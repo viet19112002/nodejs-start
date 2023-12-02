@@ -2,12 +2,13 @@ import { NoteClass } from "../class/Note.class";
 import { ConnetDB } from "../ConnectDB";
 import { Note } from "../entity/Note.entity";
 import { Request, Response } from "express";
-
+import { HttpError } from "http-error"
 
 const noteRepository = ConnetDB.getRepository(Note);
 
 export async function getAllNote(req: Request, res: Response) {
     const notes = await noteRepository.find();
+    if (!notes) throw new HttpError.notFound("This project does not exist")
     return res.send(notes);
 }
 

@@ -10,6 +10,7 @@ const router = Router();
 
 const initAPIRoutes = (app: Application): Application => {
     router.get("/users",UserController.getAllUser);
+    router.get("/users/:id",UserController.getUserById);
     router.post("/users",UserController.createUser);
     router.put("/users",UserController.updateUser);
     router.delete("/users",UserController.deleteUser);
