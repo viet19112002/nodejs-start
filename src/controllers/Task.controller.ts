@@ -1,7 +1,9 @@
+import { ObjectId } from "mongodb";
 import { TaskClass } from "../class/Task.class";
 import { ConnetDB } from "../ConnectDB";
 import { Task } from "../entity/Task.entity";
 import { Request, Response } from "express";
+import { ErrorConstant } from "../constants/Error.constant";
 
 const taskRepository = ConnetDB.getRepository(Task);
 
@@ -10,8 +12,10 @@ export async function getAllTask(req: Request, res: Response) {
     return res.send(Tasks);
 }
 
-export async function getTaskById(req: Request, res: Response) {
-    const task = await taskRepository.findOne(req.params.id);
+export async function getUserById(req: Request, res: Response) {
+    const id = new ObjectId(req.params.id);
+    const task = await taskRepository.findOneBy({ _id: id});
+    if (!task) return res.status(404).send(ErrorConstant.notFound);
     return res.send(task);
 }
 

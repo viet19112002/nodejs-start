@@ -1,8 +1,10 @@
+import { ObjectId } from "mongodb";
 import { NoteClass } from "../class/Note.class";
 import { ConnetDB } from "../ConnectDB";
 import { Note } from "../entity/Note.entity";
 import { Request, Response } from "express";
 import { HttpError } from "http-error"
+import { ErrorConstant } from "../constants/Error.constant";
 
 const noteRepository = ConnetDB.getRepository(Note);
 
@@ -12,9 +14,11 @@ export async function getAllNote(req: Request, res: Response) {
     return res.send(notes);
 }
 
-export async function getNoteById(req: Request, res: Response) {
-    const note = await noteRepository.findOne(req.params.id);
-    return res.send(note);
+export async function getUserById(req: Request, res: Response) {
+  const id = new ObjectId(req.params.id);
+  const note = await noteRepository.findOneBy({ _id: id});
+  if (!note) return res.status(404).send(ErrorConstant.notFound);
+  return res.send(note);
 }
 
 export async function createNote(req: Request, res: Response) {

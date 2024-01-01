@@ -1,8 +1,9 @@
-import { ObjectId } from "typeorm";
+import { ObjectId } from "mongodb";
 import { UserClass } from "../class/User.class";
 import { ConnetDB } from "../ConnectDB";
 import { User } from "../entity/User.entity";
 import { Request, Response } from "express";
+import { ErrorConstant } from "../constants/Error.constant";
 
 
 const userRepository = ConnetDB.getRepository(User);
@@ -14,8 +15,8 @@ export async function getAllUser(req: Request, res: Response) {
 
 export async function getUserById(req: Request, res: Response) {
     const id = new ObjectId(req.params.id);
-    const user = await userRepository.findOne({where: { _id: id }});
-    if (!user) return res.status(404).send("not found!");
+    const user = await userRepository.findOneBy({ _id: id});
+    if (!user) return res.status(404).send(ErrorConstant.notFound);
     return res.send(user);
 }
 

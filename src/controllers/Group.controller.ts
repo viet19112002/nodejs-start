@@ -1,7 +1,9 @@
+import { ObjectId } from "mongodb";
 import { GroupClass } from "../class/Group.class";
 import { ConnetDB } from "../ConnectDB";
 import { Group } from "../entity/Group.entity";
 import { Request, Response } from "express";
+import { ErrorConstant } from "../constants/Error.constant";
 
 const groupRepository = ConnetDB.getRepository(Group);
 
@@ -10,11 +12,12 @@ export async function getAllGroup(req: Request, res: Response) {
     return res.send(groups);
 }
 
-export async function getGroupById(req: Request, res: Response) {
-    const group = await groupRepository.findOne(req.params.id);
+export async function getUserById(req: Request, res: Response) {
+    const id = new ObjectId(req.params.id);
+    const group = await groupRepository.findOneBy({ _id: id});
+    if (!group) return res.status(404).send(ErrorConstant.notFound);
     return res.send(group);
 }
-
 export async function createGroup(req: Request, res: Response) {
     const newGroup = new GroupClass(req.body.groupId, req.body.title);
     const task = await groupRepository.save(newGroup);
